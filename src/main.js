@@ -3,8 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import Home from './components/Home.vue'
-import joint from 'jointjs'
+
 
 Vue.config.productionTip = false
 

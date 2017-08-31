@@ -3,6 +3,12 @@ var fs = require('fs')
 var utils = require('./utils')
 var config = require('../config')
 var vueLoaderConfig = require('./vue-loader.conf')
+var webpack= require('webpack')
+
+var _=require('lodash');
+var backbone=require('backbone');
+var joint =require('jointjs')
+
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -12,6 +18,16 @@ module.exports = {
   entry: {
     app: './src/main.js'
   },
+  plugins: [//配置jquery
+    new webpack.ProvidePlugin({
+      $: "jquery",
+      jQuery: "jquery",
+      "window.jQuery": "jquery",
+      "_":'lodash',
+      'backbone':'backbone',
+      'joint':'jointjs'
+    })
+  ],
   output: {
     path: config.build.assetsRoot,
     filename: '[name].js',
@@ -24,6 +40,7 @@ module.exports = {
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
+      jquery: "jquery/src/jquery"
     },
     symlinks: false
   },
